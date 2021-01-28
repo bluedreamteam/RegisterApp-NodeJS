@@ -14,3 +14,5 @@ To start via the terminal navigate to the source code directory and run the foll
  # Helper links
  ## EJS Linter
 `https://stackoverflow.com/questions/48140310/how-to-use-ejs-lint-in-cli/48183883#48183883`
+
+Oakland was here
