@@ -8,6 +8,8 @@ export const DatabaseConnection: Sequelize.Sequelize =
 		<Sequelize.Options>{
 			dialect:  "postgres",
 			protocol: "postgres",
+			"ssl": true,
+			dialectOptions: { "ssl": {"require": true }},
 			omitNull: true,
 			freezeTableName: true,
 			pool: <Sequelize.PoolOptions>{
