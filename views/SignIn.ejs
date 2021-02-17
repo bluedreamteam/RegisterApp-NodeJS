@@ -1,0 +1,24 @@
+<html>
+
+<head>
+	<title>Sign In</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	<link rel="stylesheet" type="text/css" href="/styles/master.css">
+	<link rel="stylesheet" type="text/css" href="/styles/signin.css">
+
+	<script type="text/javascript" src="/scripts/master.js" defer></script>
+	<script type="text/javascript" src="/scripts/signin.js" defer></script>
+</head>
+
+<form action="/signin" method="get" name="myForm">
+    <label for="empoyeeID">Employee ID:</label>
+    <input type="number" id="employeeID" name="employeeID"><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    <label for="submit">Signin:</label>
+    <input type="submit" id="submit" name="submit"><br><br>
+    <input type="button" onclick="formSubmit()" value="Submit>
+</form>
+
+</html>
