@@ -4,15 +4,15 @@ import { EmployeeFieldName, DatabaseTableName } from "./constants/databaseNames"
 import { Model, DataTypes, InitOptions, ModelAttributes, ModelAttributeColumnOptions } from "sequelize";
 
 export class EmployeeModel extends Model {
-    public readonly id!: string;
-    public firstName!: string;
-	public lastName!: string;
-	public employeeId!: number;
-	public active!: boolean;
-	public classification!: number;
-	public managerId!: string;
-	public password!: Buffer;	
-	public readonly createdOn!: Date;
+public readonly id!: string;
+public firstName!: string;
+public lastName!: string;
+public employeeId!: number;
+public active!: boolean;
+public classification!: number;
+public managerId!: string;
+public password!: Buffer;
+public readonly createdOn!: Date;
 }
 EmployeeModel.init(
 	<ModelAttributes>{
@@ -22,17 +22,17 @@ EmployeeModel.init(
 			autoIncrement: true,
 			primaryKey: true
 		},
-        firstName: <ModelAttributeColumnOptions>{
+		firstName: <ModelAttributeColumnOptions>{
 			field: EmployeeFieldName.FirstName,
 			type: new DataTypes.STRING(128),
 			allowNull: true
 		},
-        lastName: <ModelAttributeColumnOptions>{
+		lastName: <ModelAttributeColumnOptions>{
 			field: EmployeeFieldName.LastName,
 			type: new DataTypes.STRING(128),
 			allowNull: true
 		},
-        employeeId: <ModelAttributeColumnOptions>{
+		employeeId: <ModelAttributeColumnOptions>{
 			field: EmployeeFieldName.EmployeeId,
 			type: Sequelize.INTEGER,
 			allowNull: true
@@ -42,12 +42,12 @@ EmployeeModel.init(
 			type: Sequelize.BOOLEAN,
 			allowNull: true
 		},
-        classification: <ModelAttributeColumnOptions>{
+		classification: <ModelAttributeColumnOptions>{
 			field: EmployeeFieldName.Classification,
 			type: Sequelize.INTEGER,
 			allowNull: true
 		},
-        managerId: <ModelAttributeColumnOptions>{
+		managerId: <ModelAttributeColumnOptions>{
 			field: EmployeeFieldName.ManagerId,
 			type: Sequelize.UUID,
 			allowNull: true

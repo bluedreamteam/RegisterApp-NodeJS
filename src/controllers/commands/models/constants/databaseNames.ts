@@ -1,7 +1,7 @@
 export enum DatabaseTableName {
 	PRODUCT = "product",
-	EMPLOYEE ="employee",
-	ACTIVE_USER ="activeuser"
+	EMPLOYEE = "employee",
+	ACTIVE_USER = "activeuser"
 }
 /***************************************/
 
@@ -20,9 +20,8 @@ export enum EmployeeFieldName {
 	Active = "active",
 	Classification = "classification",
 	ManagerId = "managerid",
-	Password = "password",	
-	CreatedOn = "createdon"	
-	
+	Password = "password",
+	CreatedOn = "createdon"
 }
 /********************************/
 export enum ActiveUserFieldName {
@@ -32,5 +31,4 @@ export enum ActiveUserFieldName {
 	Classification = "classification",
 	SessionKey = "sessionkey",
 	CreatedOn = "createdon"
-			
 }

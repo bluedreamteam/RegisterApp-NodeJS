@@ -4,11 +4,11 @@ import { ActiveUserFieldName, DatabaseTableName } from "./constants/databaseName
 import { Model, DataTypes, InitOptions, ModelAttributes, ModelAttributeColumnOptions } from "sequelize";
 
 export class ActiveUserModel extends Model {
-    public readonly id!: string;
-    public employeeId!: string;
+	public readonly id!: string;
+	public employeeId!: string;
 	public name!: string;
 	public classification!: number;
-	public sessionKey!: string;	
+	public sessionKey!: string;
 	public readonly createdOn!: Date;
 }
 
@@ -20,7 +20,7 @@ ActiveUserModel.init(
 			autoIncrement: true,
 			primaryKey: true
 		},
-        employeeId: <ModelAttributeColumnOptions>{
+		employeeId: <ModelAttributeColumnOptions>{
 			field: ActiveUserFieldName.EmployeeId,
 			type: Sequelize.UUID,
 			allowNull: true
@@ -30,12 +30,12 @@ ActiveUserModel.init(
 			type: new DataTypes.STRING(256),
 			allowNull: true
 		},
-        classification: <ModelAttributeColumnOptions>{
+		classification: <ModelAttributeColumnOptions>{
 			field: ActiveUserFieldName.Classification,
 			type: Sequelize.INTEGER,
 			allowNull: true
 		},
-        sessionKey: <ModelAttributeColumnOptions>{
+		sessionKey: <ModelAttributeColumnOptions>{
 			field: ActiveUserFieldName.SessionKey,
 			type: new DataTypes.STRING(128),
 			allowNull: true
