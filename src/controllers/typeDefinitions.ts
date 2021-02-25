@@ -49,3 +49,28 @@ export interface CommandResponse<T> {
 	status: number;
 	message?: string;
 }
+// Requests employee credentials
+// Password and ID
+export interface SignInRequest {
+	password: string;
+	employeeId: string;
+}
+// Holds information for active user
+// ID, name, employeeId, and classification number
+export interface ActiveUser {
+	id: string;
+	name: string;
+	employeeId: string;
+	classification: number;
+}
+// Holds all relevent Employee data
+export interface Employee {
+	id: string;
+	active: boolean;
+	lastName: string;
+	createdOn: Date;
+	firstName: string;
+	managerId: string;
+	employeeId: string;
+	classification: number;
+}
