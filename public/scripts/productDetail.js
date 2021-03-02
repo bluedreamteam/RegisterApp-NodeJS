@@ -68,12 +68,12 @@ function saveActionClick(event) {
 				displayProductSavedAlertModal();
 
 				if ((callbackResponse.data != null)
-					&& (callbackResponse.data.product != null)
-					&& (callbackResponse.data.product.id.trim() !== "")) {
+					&& (callbackResponse.data.id != null)
+					&& (callbackResponse.data.id.trim() !== "")) {
 
 					document.getElementById("deleteActionContainer").classList.remove("hidden");
 
-					setProductId(callbackResponse.data.product.id.trim());
+					setProductId(callbackResponse.data.id.trim());
 				}
 			}
 		});
@@ -137,7 +137,7 @@ function deleteActionClick(event) {
 				
 				window.location.replace(callbackResponse.data.redirectUrl);
 			} else {
-				window.location.replace("/");
+				window.location.replace("/productListing");
 			}
 		}
 	});

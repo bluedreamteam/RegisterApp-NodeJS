@@ -5,10 +5,8 @@ import { Resources, ResourceKey } from "../../../resourceLookup";
 import * as ActiveUserRepository from "../models/activeUserModel";
 import * as DatabaseConnection from "../models/databaseConnection";
 
-// Attempts to remove an active user by data associated with
-// the employee database provided by the user through the variable lookupData
 const attemptRemoveActiveUser = async (
-	lookupData: string, // either ID or session key
+	lookupData: string,
 	activeUserQuery: (
 		lookupData: string,
 		queryTransaction?: Sequelize.Transaction
@@ -17,30 +15,30 @@ const attemptRemoveActiveUser = async (
 
 	let removeTransaction: Sequelize.Transaction;
 
-	return DatabaseConnection.createTransaction() // Check against database.
+	return DatabaseConnection.createTransaction()
 		.then((createdTransaction: Sequelize.Transaction): Promise<ActiveUserModel | null> => {
 			removeTransaction = createdTransaction;
 
-			return activeUserQuery(lookupData, removeTransaction); // Return user by lookupData and transaction
+			return activeUserQuery(lookupData, removeTransaction);
 		}).then((queriedActiveUser: (ActiveUserModel | null)): Promise<void> => {
-			if (!queriedActiveUser) { // If queriedActiveUser does not equal null
-				return Promise.resolve(); // resolve Promise value
+			if (!queriedActiveUser) {
+				return Promise.resolve();
 			}
 
-			return queriedActiveUser.destroy( // Actually remove searched user
+			return queriedActiveUser.destroy(
 				<Sequelize.DestroyOptions>{
 					transaction: removeTransaction
 				});
-		}).then((): CommandResponse<void> => { // End current transaction
+		}).then((): CommandResponse<void> => {
 			removeTransaction.commit();
 
-			return <CommandResponse<void>>{ status: 204 }; // return no content
+			return <CommandResponse<void>>{ status: 204 };
 		}).catch((error: any): CommandResponse<void> => {
 			if (removeTransaction != null) {
 				removeTransaction.rollback();
 			}
 
-			return <CommandResponse<void>>{ // return internal server error
+			return <CommandResponse<void>>{
 				status: 500,
 				message: error.message
 			};
@@ -54,18 +52,17 @@ export const removeById = async (
 
 	if ((activeUserId == null) || (activeUserId.trim() === "")) {
 		return <CommandResponse<void>>{
-			status: 422, // unprocessable_entity
+			status: 422,
 			message: Resources.getString(ResourceKey.USER_UNABLE_TO_SIGN_OUT)
 		};
 	}
-//  Removal of active user calling on main removal function.
+
 	return attemptRemoveActiveUser(activeUserId, ActiveUserRepository.queryById);
 };
 
-// Attempt to remove an active user by their Session Key
 export const removeBySessionKey = async (
 	sessionKey: string
 ): Promise<CommandResponse<void>> => {
-//  Calls main removal function by looking up session key
+
 	return attemptRemoveActiveUser(sessionKey, ActiveUserRepository.queryBySessionKey);
 };

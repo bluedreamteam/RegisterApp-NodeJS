@@ -38,20 +38,20 @@
 					<tr>
 						<td class="label">Lookup Code:</td>
 						<td>
-							<input id="productLookupCode" type="text" value="<% if (locals.product && locals.product.lookupCode) { %><%= locals.product.lookupCode %><% } %>" class="update" />
+							<input id="productLookupCode" type="text" value="<% if (locals.product && locals.product.lookupCode) { %><%= locals.product.lookupCode %><% } %>" class="update" <% if (!locals.isElevatedUser) { %>disabled<% } %> />
 						</td>
 					</tr>
 					<tr>
 						<td class="label">Count:</td>
 						<td>
-							<input id="productCount" type="number" value="<% if (locals.product && locals.product.count) { %><%= locals.product.count.toString() %><% } %>" class="update" />
+							<input id="productCount" type="number" value="<% if (locals.product && locals.product.count) { %><%= locals.product.count.toString() %><% } %>" class="update" <% if (!locals.isElevatedUser) { %>disabled<% } %> />
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 
-		<div>
+		<div class="productActionsWrapper<% if (!locals.isElevatedUser) { %> hidden<% } %>">
 			<br />
 			<div id="deleteActionContainer" <% if (!locals.product || !locals.product.id || (locals.product.id.trim() === "")) { %>class="hidden"<% } %>>
 				<button id="deleteButton" type="button" class="action">Delete</button>
@@ -71,6 +71,10 @@
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<div class="footer">
+		<img id="signOutImage" src="/images/Sign-Out.png" alt="Sign Out" class="footer" />
 	</div>
 
 </body>

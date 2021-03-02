@@ -1,5 +1,5 @@
  # Basic description
-Browser based register application that interacts with a PostgreSQL database. Implemented in NodeJS with typescript, express, and the sequelize ORM. Edited in Visual Studio Code.  
+Browser based register application that interacts with a PostgreSQL database. Implemented in NodeJS with typescript, restify, and the sequelize ORM. Edited in Visual Studio Code.  
   
 If a "PORT" environment variable has not been defined then the application currently defaults to port 15100 (see ./src/app.ts).  
 
@@ -9,7 +9,7 @@ To start via the terminal navigate to the source code directory and run the foll
 `$ npm run start`  
 
  # Landing page (list available products)
-`https://uarkregappnodejs.herokuapp.com/`  
+`https://uarkregservnodejsweb.herokuapp.com/`  
 
  # Helper links
  ## EJS Linter

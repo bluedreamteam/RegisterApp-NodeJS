@@ -26,7 +26,7 @@
 		</div>
 
 		<div class="productsWrapper">
-			<div>
+			<div <% if (!locals.isElevatedUser) { %>class="hidden"<% } %>>
 				<a href="/productDetail/" class="button">Create New</a>
 			</div>
 			<br />
@@ -61,6 +61,10 @@
 				}
 			</script>
 		</div>
+	</div>
+
+	<div class="footer">
+		<img id="signOutImage" src="/images/Sign-Out.png" alt="Sign Out" class="footer" />
 	</div>
 
 </body>
