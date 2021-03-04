@@ -4,15 +4,14 @@ import { EmployeeFieldName, DatabaseTableName } from "./constants/databaseNames"
 import { Model, DataTypes, InitOptions, ModelAttributes, ModelAttributeColumnOptions } from "sequelize";
 
 export class EmployeeModel extends Model {
-	public active!: boolean;
-	public lastName!: string;
-	public password!: Buffer;
-	public firstName!: string;
-	public managerId!: string;
-	public employeeId!: number;
-	public classification!: number;
-
 	public readonly id!: string;
+	public firstName!: string;
+	public lastName!: string;
+	public employeeId!: number;
+	public active!: boolean;
+	public classification!: number;
+	public managerId!: string;
+	public password!: Buffer;
 	public readonly createdOn!: Date;
 }
 
@@ -24,14 +23,34 @@ EmployeeModel.init(
 			autoIncrement: true,
 			primaryKey: true
 		},
-		active: <ModelAttributeColumnOptions>{
-			field: EmployeeFieldName.Active,
-			type: Sequelize.BOOLEAN,
+		firstName: <ModelAttributeColumnOptions>{
+			field: EmployeeFieldName.FirstName,
+			type: new DataTypes.STRING(128),
 			allowNull: true
 		},
 		lastName: <ModelAttributeColumnOptions>{
 			field: EmployeeFieldName.LastName,
 			type: new DataTypes.STRING(128),
+			allowNull: true
+		},
+		employeeId: <ModelAttributeColumnOptions>{
+			field: EmployeeFieldName.EmployeeId,
+			type: Sequelize.INTEGER,
+			allowNull: true
+		},
+		active: <ModelAttributeColumnOptions>{
+			field: EmployeeFieldName.Active,
+			type: Sequelize.BOOLEAN,
+			allowNull: true
+		},
+		classification: <ModelAttributeColumnOptions>{
+			field: EmployeeFieldName.Classification,
+			type: Sequelize.INTEGER,
+			allowNull: true
+		},
+		managerId: <ModelAttributeColumnOptions>{
+			field: EmployeeFieldName.ManagerId,
+			type: Sequelize.UUID,
 			allowNull: true
 		},
 		password: <ModelAttributeColumnOptions>{
@@ -43,27 +62,8 @@ EmployeeModel.init(
 			field: EmployeeFieldName.CreatedOn,
 			type: new DataTypes.DATE(),
 			allowNull: true
-		},
-		firstName: <ModelAttributeColumnOptions>{
-			field: EmployeeFieldName.FirstName,
-			type: new DataTypes.STRING(128),
-			allowNull: true
-		},
-		managerId: <ModelAttributeColumnOptions>{
-			field: EmployeeFieldName.ManagerId,
-			type: Sequelize.UUID,
-			allowNull: true
-		},
-		employeeId: <ModelAttributeColumnOptions>{
-			field: EmployeeFieldName.EmployeeId,
-			type: Sequelize.INTEGER,
-			allowNull: true
-		},
-		classification: <ModelAttributeColumnOptions>{
-			field: EmployeeFieldName.Classification,
-			type: Sequelize.INTEGER,
-			allowNull: true
 		}
+
 	}, <InitOptions>{
 		timestamps: false,
 		freezeTableName: true,
